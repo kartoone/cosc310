@@ -76,6 +76,17 @@ public class Tree<E> {
         return nsize;
     }
 
+    public long height() {       
+        // finish this!
+        return 0;
+    }
+
+    // the size of the subtree rooted at n
+    public long height(TreeNode<E> n) {
+        // finish this!
+        return 0;
+    }
+
     /**
      * 
      * @param e - the data we are searching for

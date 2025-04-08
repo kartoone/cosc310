@@ -45,15 +45,15 @@ public class Sorter {
      * @param list
      * @return the sorted list
      */
-    public static ArrayList<Comparable> mergeSort(ArrayList<Comparable> list) {
+    public static <T extends Comparable<? super T>> ArrayList<T> mergeSort(ArrayList<T> list) {
         if (list.size()<=1)
             return list;
         
         // Recursive case. First, divide the list into equal-sized sublists
         // consisting of the first half and second half of the list.
         // This assumes lists start at index 0.
-        ArrayList<Comparable> left = new ArrayList<>();
-        ArrayList<Comparable> right = new ArrayList<>();
+        ArrayList<T> left = new ArrayList<>();
+        ArrayList<T> right = new ArrayList<>();
         for (int i=0; i<list.size(); i++) {
             if (i<list.size()/2) {
                 left.add(list.get(i));
@@ -70,13 +70,13 @@ public class Sorter {
         return merge(left, right);
     }
 
-    public static ArrayList<Comparable> merge(ArrayList<Comparable> left, ArrayList<Comparable> right) {
+    public static <T extends Comparable<? super T>> ArrayList<T> merge(ArrayList<T> left, ArrayList<T> right) {
         // Implement this pseudocode to finish mergesort:
         /*
             var result := empty list
-
             while left is not empty and right is not empty do
-                if first(left) ≤ first(right) then
+                if first(left) ≤ first(right) then ... instead of using <=, use compareTo method and check if return value <= 0 otherwise it must have been greater than ... see below:                
+                if (first(left).compareTo(first(right)) <= 0) then
                     append first(left) to result
                     left := rest(left)
                 else
@@ -93,6 +93,11 @@ public class Sorter {
                 right := rest(right)
             return result
          */
+
+        // update the next line to return your newly merged result list!
+        return null;
+
     }
+
 
 }

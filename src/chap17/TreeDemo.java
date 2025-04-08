@@ -24,20 +24,20 @@ public class TreeDemo {
         String csvstr = "ATL,PEK,LAX,DXB,HND,ORD,LHR,HKG,PVG,CDG,DFW,CAN,AMS,FRA,IST,DEL,JFK,SIN,ICN,DEN,BKK,SFO,KUL,MAD,LAS,CTU,BCN,SEA,PHX,MIA,MUC,SYD,FCO,EWR,MCO,SHA,CLT,YYZ,LGW,MSP,BOM,SZX,MEL,MNL,IAH,KMG,ZRH,GRU,OSL,ARN,DME,DOH,VIE,BNE,CPH,HEL,BRU,SVO,MXP,MAN,LIM,YVR,TXL,NRT,AUH,STN,LGG,LIS,HOU,BOG,PRG,WAW,ATH,GIG,LGA,CAI,TPE,SGN,LED,BUD,CGK,TXL,OTP,BSB,GMP,CHC,CMN,SAN,OKA,AKL,THR,TUN,ALG,KWI,DUB,CRK,CPT,ABV,BNE,SGF,ICT,OMA,ELP,BUF,BHM,HSV,MDT,PSP,RNO,GEG,MYR,ORF,ANC,FLL,PIT,CLE,SNA,JAX,MSY,SMF,PDX";
         Tree<String> leftleaning = createLeftLeaningBinaryTree(csvstr);
         System.out.println(leftleaning.size());
-//        System.out.println(leftleaning.height());// UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
+        System.out.println(leftleaning.height());// UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
 
         System.out.println();
 
         Tree<String> rightleaning = createRightLeaningBinaryTree(csvstr);
         System.out.println(rightleaning.size());
- //       System.out.println(rightleaning.height());// UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
+        System.out.println(rightleaning.height());// UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
         
         System.out.println();
 
         Tree<String> balanced = createBalancedBinaryTreeCorrect(csvstr);
         System.out.println(balanced);
         System.out.println(balanced.size());
-  //      System.out.println(balanced.height()); // UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
+        System.out.println(balanced.height()); // UNCOMMENT ONCE YOU HAVE IMPLEMTED HEIGHT
     }
 
     public static Tree<String> createTreeSimple(String csvdata) {
