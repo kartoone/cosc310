@@ -12,7 +12,8 @@ public class Sorter {
         for (int i=0; i<unsorted.length-1; i++) {
             // int current = unsorted[i];
             int minrest = findMin(i+1, unsorted);
-            swap(i, minrest, unsorted);
+            if (unsorted[minrest]<unsorted[i])
+                swap(i, minrest, unsorted);
         }
 
     }

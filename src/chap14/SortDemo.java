@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SortDemo {
     
-    static int[] nums = new int[100000]; // 1 million elements
+    static int[] nums = new int[10]; // 1 million elements
     public static void main(String[] args) {
         initNums();
         long start = System.nanoTime();
@@ -32,7 +32,7 @@ public class SortDemo {
         start = System.nanoTime();
         Sorter.mergeSort(numsList);
         end = System.nanoTime();
-        System.out.println("Time taken for bubbleSort on " + nums.length + " items: " + (end - start)/1000000 + " ms");
+        System.out.println("Time taken for mergeSort on " + nums.length + " items: " + (end - start)/1000000 + " ms");
         System.out.println(java.util.Arrays.toString(java.util.Arrays.copyOf(nums,10)));
     }
 
