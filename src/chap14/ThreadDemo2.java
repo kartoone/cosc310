@@ -3,8 +3,13 @@ package chap14;
 import java.util.Random;
 
 public class ThreadDemo2 {
-    static byte[] nums = new byte[1_000_000]; 
-    static int shared_hit_counter = 0;
+    static byte[] nums = new byte[10_000_000]; 
+    static private int shared_hit_counter = 0;
+
+    static synchronized void incrementHitCounter() {
+        shared_hit_counter++;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         System.out.println("2");
         initNums();
@@ -67,6 +72,38 @@ public class ThreadDemo2 {
         System.out.println("Independent workers hit count was: " + grandtotal);
         System.out.println("Expected hit count: 1/21 = " + (1.0/21.0) + " * " + nums.length + " = " + Math.round(1.0/21.0 * nums.length));
 
+        // let's do this again with the shared hit counter but get rid of the unnecessary worker class
+        shared_hit_counter = 0;
+        for (int i = 0; i < threads.length; i++) {
+            int start = i * slice;
+            int end = i*slice + slice;
+            threads[i] = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = start; i < end; i++) {
+                        if (nums[i]==3)
+                            incrementHitCounter();
+                    }
+                    System.out.println("Thread exiting: my start and end was: " + start + ", " + end);
+                }                
+            });
+            threads[i].start();
+        }
+
+        // join is used to block until a thread finishes
+        // this loop will wait until continue all threads finishes
+        for (int i=0; i<TCOUNT; i++) {
+            threads[i].join();
+            System.out.println(" DONE waiting on thread: " + i);
+        }
+
+        // Since we are generated 21 different random numbers (-10 to 10), we can calculate the expected number of hits
+        // by multiplying the number of elements by the probability of hitting a number
+        // 1/21 = 0.047619047619047616
+        System.out.println("Exiting main: shared state hit count was: " + shared_hit_counter);
+        System.out.println("Independent workers hit count was: " + grandtotal);
+        System.out.println("Expected hit count: 1/21 = " + (1.0/21.0) + " * " + nums.length + " = " + Math.round(1.0/21.0 * nums.length));
+
     }
 
      public static void initNums() {
@@ -98,7 +135,7 @@ class SSWorker implements Runnable {
     public void run() {
         for (int i = start; i < end; i++) {
             if (nums[i]==needle)
-                ThreadDemo2.shared_hit_counter++;
+                ThreadDemo2.incrementHitCounter();
         }        
     }
 
