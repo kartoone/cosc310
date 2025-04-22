@@ -3,6 +3,11 @@ package chap13;
 public class RecursiveDemo {
 
     public static void main(String[] args) {
+        // informal - non-automated testing
+        int tbyte = 0b10110111;
+        int bit = extractBit(tbyte, 0);
+        System.out.println(bit);
+
         int reading = 0b00000000111111110000000000000000;
         int passdist = bitextractor(reading, 18, 3);
         int passdist_r = bitextractor_r(reading, 18, 3);
@@ -20,14 +25,14 @@ public class RecursiveDemo {
         return (number >> position) & 1;
     }
 
-    private static int bitextractor_r(int reading, int pos, int n) {
+    public static int bitextractor_r(int reading, int pos, int n) {
         if (n == 1) {
             return extractBit(reading, pos);
         } else {
             return (extractBit(reading, pos) << (n-1)) | bitextractor_r(reading, pos-1, n-1);
         }
     }
-    private static int bitextractor(int reading, int pos, int n) {
+    public static int bitextractor(int reading, int pos, int n) {
         if (pos>n-1) {
             int needsmasking = reading >> (pos-(n-1));
             int mask = 0;
