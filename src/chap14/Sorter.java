@@ -37,7 +37,13 @@ public class Sorter {
     }
 
     public static void bubbleSort(int array[]) {
-        // TO DO: implement this!
+        for (int i=0; i<array.length; i++) {
+            for (int j=0; j<array.length-i-1; j++) {
+                if (array[j]>array[j+1]) {
+                    swap(j, j+1, array);
+                }
+            }
+        }
     }
 
     /**
@@ -95,8 +101,26 @@ public class Sorter {
             return result
          */
 
-        // update the next line to return your newly merged result list!
-        return null;
+        ArrayList<T> result = new ArrayList<>();
+        while (!left.isEmpty() && !right.isEmpty()) {
+            if (left.getFirst().compareTo(right.getFirst()) <= 0) {
+                result.add(left.getFirst());
+                left.remove(0);
+            } else {
+                result.add(right.getFirst());
+                right.remove(0);
+            }
+        }
+        // Either left or right may have elements left; consume them.
+        // (Only one of the following loops will actually be entered.)
+        while (!left.isEmpty()) {
+            result.add(left.remove(0));
+        }
+        while (!right.isEmpty()) {
+            result.add(right.remove(0));
+        }
+        // return the merged list
+        return result;
 
     }
 
