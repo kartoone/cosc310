@@ -1,5 +1,7 @@
 package review;
 
+// doubly nested loop to find the two values that add up to target
+
 public class Twosum {
     
     public int[] twoSum(int[] nums, int target) {
