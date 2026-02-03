@@ -36,4 +36,9 @@ public class DNode<T> {
         this.next = next;
     }
 
+    @Override
+    public String toString() {
+        return "DNode [data=" + data + "]";
+    }
+
 }
