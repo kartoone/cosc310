@@ -1,11 +1,11 @@
 package chapter9;
 
-import java.util.ArrayList;
+import my.util.DLinkedList;
 import java.util.EmptyStackException;
 
-public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
+public class ListStack<T> implements Stack<T> {
 
-    ArrayList<T> data = new ArrayList<>();
+    DLinkedList<T> data = new DLinkedList<>();
 
     /****
      * Designate the "end" of the arraylist as the top of stack.
@@ -22,7 +22,7 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return data.remove(data.size()-1);
+        return data.removeLast().getData();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return data.get(data.size()-1);
+        return data.get(data.size()-1).getData();
     }
 
     @Override
@@ -46,15 +46,14 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
     @Override
     public String toString() {
         if (isEmpty()) {
-            return "ArrayStack [data=" + data + ", top()=EMPTY, size()=" + size() + "]";
+            return "ListStack [data=" + data + ", top()=EMPTY, size()=" + size() + "]";
         } else {
-            return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
+            return "ListStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
         }
     }
 
-    @Override
-    public int compareTo(Stack<T> o) {
-        return size()-o.size();
-    }
+    
+
+    
 
 }

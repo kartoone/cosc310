@@ -9,6 +9,35 @@ public class DLinkedList<T> {
     public DLinkedList() {
 
     }
+
+    /**
+     * Returns the node at position i and returns null if i is invalid.
+     * 
+     * @param i
+     * @return null if i is invalid
+     */
+    public DNode<T> get(int i) {
+        if (i>size || i<0)
+            return null;
+
+        // decide whether we should start at head or tail
+        if (i < size/2) {
+            // start at the head
+            DNode<T> n=head;
+            for (int j=0; j<i; j++) {
+                n=n.getNext();
+            }
+            return n;
+
+        } else {
+            // start at the tail
+            DNode<T> n=tail;
+            for (int j=0; j<size-i-1; j++) {
+                n=n.getPrev();
+            }
+            return n;
+        }
+    }
     
     // need to break the connection between node and whatever its current "next" is
     public void addAfter(DNode<T> node, T data) {
@@ -58,6 +87,44 @@ public class DLinkedList<T> {
         size++;        
         tail = newnode;
         return newnode;
+    }
+
+    /**
+     * Returns the last node ... null if list is empty
+     * 
+     * @return null if list is empty
+     */
+    public DNode<T> removeLast() {
+        if (size==0) {
+            return null;
+        } else if (size==1) {
+            DNode<T> n = tail;
+            head=null;
+            tail=null;
+            size--;
+            return n;
+        } 
+
+        // only make it to here in a normal sized list
+        DNode<T> oldtail = tail;
+        tail.getPrev().setNext(null);
+        tail = tail.getPrev();
+        size--;
+
+        // if and only if the new size is one
+        if (size==1) {
+            head = tail;
+        }
+
+        return oldtail;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size==0;
     }
 
     @Override
