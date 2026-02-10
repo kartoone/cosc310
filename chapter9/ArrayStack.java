@@ -18,7 +18,7 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws Exception {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
@@ -26,7 +26,7 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
     }
 
     @Override
-    public T top() {
+    public T top() throws Exception {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
@@ -48,7 +48,13 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
         if (isEmpty()) {
             return "ArrayStack [data=" + data + ", top()=EMPTY, size()=" + size() + "]";
         } else {
-            return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
+            try {
+                return "ArrayStack [data=" + data + ", top()=" + top() + ", size()=" + size() + "]";
+            } catch (EmptyStackException ex) {
+                return "ArrayStack [data=" + data + ", top()= EMPTY, size()=" + size() + "]";
+            } catch (Exception ex) {
+                return "Something really bad happened to your stack";
+            }
         }
     }
 
