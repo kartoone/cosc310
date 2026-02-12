@@ -1,7 +1,5 @@
 package chapter9;
 
-import my.util.DLinkedList;
-
 public class Lab2 {
 
     public static void runStackTests(Stack<String> stack, String whichStack) throws Exception {
