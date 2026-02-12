@@ -62,6 +62,25 @@ public class DLinkedList<T> {
         }
     }
 
+    public void addBefore(DNode<T> node, T data) {
+        if (node == head) {
+            addFirst(data); // already adds at the head
+        } else if (node == null) {
+            add(data); // already adds at the tail
+        } else {
+            // normal case where we are not adding at the beginning or the end
+            // the constructor alone lets us set the prev and next for the new node
+            DNode<T> newnode = new DNode<>(node.getPrev(), node, data);
+
+            // But we need to update the next on the node we are being added after
+            node.getPrev().setNext(newnode);
+
+            // And we need to update the prev on the node we are being added before
+            node.setPrev(newnode);
+            size++;
+        }
+    }
+
     public DNode<T> addFirst(T data) {
         DNode<T> newnode = new DNode<>(null, head, data);
         if (size == 0) {

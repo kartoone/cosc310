@@ -33,7 +33,6 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
             return;
         }
         
-        // TODO: find insertion point and insert so list is sorted by priority ASC
         // Algorithm: make sure first item in DLInkedList is always highest priority
         // Start with first item and traverse the list until you get to a higher priority item
         // Insert the new item before the one you just found
