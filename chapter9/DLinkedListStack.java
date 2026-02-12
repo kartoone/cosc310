@@ -1,7 +1,6 @@
 package chapter9;
 
 import my.util.DLinkedList;
-import my.util.DNode;
 
 public class DLinkedListStack<T> implements Stack<T> {
 
@@ -19,7 +18,8 @@ public class DLinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() throws Exception {
         // TODO
-        return null;
+       
+        return list.removeLast().getData();
     }
 
     @Override

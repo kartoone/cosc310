@@ -1,6 +1,7 @@
 package chapter9;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class ArrayListStack<T> implements Stack<T> {
 
@@ -12,13 +13,16 @@ public class ArrayListStack<T> implements Stack<T> {
 
     @Override
     public void push(T item) {
-        // TODO
+        data.add(item);
     }
 
     @Override
     public T pop() throws Exception {
         // TODO
-        return null;
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return data.removeLast();
     }
 
     @Override

@@ -4,12 +4,17 @@ import java.util.ArrayList;
 
 public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
 
-    private static class Entry<T> {
+    private static class Entry<T> implements Comparable<Entry<T>> {
         final int priority;
         final T data;
         Entry(int priority, T data) {
             this.priority = priority;
             this.data = data;
+        }
+
+        @Override
+        public int compareTo(Entry<T> o) {
+            return o.priority - this.priority;
         }
     }
 
@@ -22,12 +27,14 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public void enqueue(int priority, T data) {
         // TODO: insert so list is sorted by priority ASC (lower number is higher priority)
+        list.add(new Entry<>(priority, data));
+        list.sort(null);
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO: remove index 0
-        return null;
+        return list.remove(0).data;
     }
 
     @Override
