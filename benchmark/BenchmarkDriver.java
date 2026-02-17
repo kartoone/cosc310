@@ -1,6 +1,8 @@
 package benchmark;
 
 import chapter9.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -36,10 +38,9 @@ public class BenchmarkDriver {
     // SANITY
     // -----------------------------
     private static void sanity() throws Exception {
-        Stack<Integer>[] stacks = new Stack[] {
-            new chapter9.ArrayListStack<>(),
-            new chapter9.DLinkedListStack<>()
-        };
+        ArrayList<Stack<Integer>> stacks = new ArrayList<>();
+        stacks.add(new chapter9.ArrayListStack<Integer>());
+        stacks.add(new chapter9.DLinkedListStack<Integer>());
 
         for (Stack<Integer> s : stacks) {
             for (int i = 0; i < 10; i++) s.push(i);
@@ -51,10 +52,9 @@ public class BenchmarkDriver {
             if (!s.isEmpty()) throw new RuntimeException("Stack empty failed");
         }
 
-        Queue<Integer>[] queues = new Queue[] {
-            new chapter9.ArrayListQueue<>(),
-            new chapter9.DLinkedListQueue<>()
-        };
+        ArrayList<Queue<Integer>> queues = new ArrayList<>();
+        queues.add(new chapter9.ArrayListQueue<>());
+        queues.add(new chapter9.DLinkedListQueue<>());
 
         for (Queue<Integer> q : queues) {
             for (int i = 0; i < 10; i++) q.enqueue(i);
