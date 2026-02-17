@@ -38,7 +38,7 @@ public class ArrayListQueue<T> implements Queue<T> {
     @Override
     public T front() throws Exception {
         // TODO
-        return null;
+        return buffer.get(head);
     }
 
     @Override
@@ -58,12 +58,16 @@ public class ArrayListQueue<T> implements Queue<T> {
 
         // resize and recenter
         int oldcap = buffer.size();
-        ArrayList<T> bigbuffer = new ArrayList<>(buffer.size()*2);
+        ArrayList<T> bigbuffer = new ArrayList<>(oldcap*2);
+        for (int i = 0; i < oldcap*2; i++) {
+            bigbuffer.add(null);    
+        }
         for (int i=0; i<oldcap; i++) {
-            bigbuffer.set(i, buffer.get(head));
+            bigbuffer.set(i,buffer.get(head));
             head = (head + 1) % oldcap;
         }
         buffer = bigbuffer; // the "old" swaperoo trick
+        head = 0;
         tail = oldcap;
     }
 }

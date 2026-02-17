@@ -15,7 +15,7 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
 
         @Override
         public int compareTo(Entry<T> o) {
-            return o.priority - this.priority;
+            return this.priority - o.priority;
         }
     }
 
@@ -40,7 +40,7 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
         while (curr!=null) {
             if (priority<curr.getData().priority) {
                 list.addBefore(curr, newentry);
-                break;
+                return;
             }
             curr = curr.getNext();
         }
@@ -55,13 +55,13 @@ public class SortedDLinkedListPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public T dequeue() throws Exception {
         // TODO: removeFirst()
-        return null;
+        return list.removeFirst().getData().data;
     }
 
     @Override
     public T front() throws Exception {
         // TODO: peek head
-        return null;
+        return list.get(0).getData().data;
     }
 
     @Override
