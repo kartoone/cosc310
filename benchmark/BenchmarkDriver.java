@@ -1,6 +1,8 @@
 package benchmark;
 
 import chapter9.*;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -9,8 +11,8 @@ public class BenchmarkDriver {
     // -----------------------------
     // CONFIG
     // -----------------------------
-    private static final int WARMUP_OPS = 150_000;
-    private static final int MEASURE_OPS = 600_000;
+    private static final int WARMUP_OPS = 15_000;
+    private static final int MEASURE_OPS = 60_000;
     private static final int TRIALS = 7;
     private static final long SEED = 315_351_107L;
 
@@ -36,10 +38,9 @@ public class BenchmarkDriver {
     // SANITY
     // -----------------------------
     private static void sanity() throws Exception {
-        Stack<Integer>[] stacks = new Stack[] {
-            new chapter9.ArrayListStack<>(),
-            new chapter9.DLinkedListStack<>()
-        };
+        ArrayList<Stack<Integer>> stacks = new ArrayList<>();
+        stacks.add(new chapter9.ArrayListStack<Integer>());
+        stacks.add(new chapter9.DLinkedListStack<Integer>());
 
         for (Stack<Integer> s : stacks) {
             for (int i = 0; i < 10; i++) s.push(i);
@@ -51,10 +52,9 @@ public class BenchmarkDriver {
             if (!s.isEmpty()) throw new RuntimeException("Stack empty failed");
         }
 
-        Queue<Integer>[] queues = new Queue[] {
-            new chapter9.ArrayListQueue<>(),
-            new chapter9.DLinkedListQueue<>()
-        };
+        ArrayList<Queue<Integer>> queues = new ArrayList<>();
+        queues.add(new chapter9.ArrayListQueue<>());
+        queues.add(new chapter9.DLinkedListQueue<>());
 
         for (Queue<Integer> q : queues) {
             for (int i = 0; i < 10; i++) q.enqueue(i);
@@ -66,11 +66,10 @@ public class BenchmarkDriver {
             if (!q.isEmpty()) throw new RuntimeException("Queue empty failed");
         }
 
-        PriorityQueue<Integer>[] pqs = new PriorityQueue[] {
-            new chapter9.SortedArrayListPriorityQueue<>(),
-            new chapter9.SortedDLinkedListPriorityQueue<>(),
-            new chapter9.BinaryHeapPriorityQueue<>()
-        };
+        ArrayList<PriorityQueue<Integer>> pqs = new ArrayList<>();
+        pqs.add(new chapter9.SortedArrayListPriorityQueue<>());
+        pqs.add(new chapter9.SortedDLinkedListPriorityQueue<>());
+        pqs.add(new chapter9.BinaryHeapPriorityQueue<>());
 
         for (PriorityQueue<Integer> pq : pqs) {
             pq.enqueue(5, 50);

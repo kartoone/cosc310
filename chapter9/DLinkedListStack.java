@@ -13,6 +13,7 @@ public class DLinkedListStack<T> implements Stack<T> {
     @Override
     public void push(T item) {
         // TODO (use tail as the top)
+        list.add(item);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class DLinkedListStack<T> implements Stack<T> {
     @Override
     public T top() throws Exception {
         // TODO
-        return null;
+        return list.get(list.size()-1).getData();
     }
 
     @Override
