@@ -28,6 +28,7 @@ public class KeyPad extends JPanel
       // Add display field
    
       display = new JTextField();
+      display.setEditable(true);
       add(display, "North");
 
       // Make button panel

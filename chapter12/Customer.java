@@ -14,13 +14,17 @@ public class Customer
       Constructs a customer with a given number and PIN.
       @param aNumber the customer number
       @param aPin the personal identification number
+ * @param saveBalance 
+ * @param saveAcct 
+ * @param checkBalance 
+ * @param checkAcct 
    */
-   public Customer(int aNumber, int aPin)
+   public Customer(int aNumber, int aPin, String checkAcct, double checkBalance, String saveAcct, double saveBalance)
    {  
       customerNumber = aNumber;
       pin = aPin;
-      checkingAccount = new BankAccount();
-      savingsAccount = new BankAccount();
+      checkingAccount = new BankAccount(checkAcct, checkBalance);
+      savingsAccount = new BankAccount(saveAcct, saveBalance);
    }
    
    /** 
