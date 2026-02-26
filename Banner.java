@@ -32,5 +32,6 @@ public class Banner {
                 }*/
             }
         }
+        System.out.println(personsList.size());
     }
 }

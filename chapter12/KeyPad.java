@@ -63,8 +63,6 @@ public class KeyPad extends JPanel
          }
       }
 
-      ActionListener listener = new ClearButtonListener();      
-
       clearButton.addActionListener(new 
             ClearButtonListener());      
       

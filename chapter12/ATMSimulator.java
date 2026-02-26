@@ -98,5 +98,6 @@ public class ATMSimulator
             }
          }         
       }
+      in.close();
    }
 }
