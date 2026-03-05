@@ -18,10 +18,11 @@ public class Banner {
         persons[4] = new Staff("Charlie Davis", "700000000", "202 lane, city, state, zip, usa", "cdavis@samford.edu");
         for (Person person : persons) {
             if (person != null) {
+                System.out.println(person); // rely on a toString method being defined at the top of the hierarchy
                 //System.out.println("Name: " + person.name);
 
-                System.out.println("Name: " + person.getName());
-                System.out.println("Type: " + person.getType());
+                //System.out.println("Name: " + person.getName());
+                //System.out.println("Type: " + person.getType());
                 
                 /*if (person instanceof Student) {
                     System.out.println("Type: Student");
