@@ -21,11 +21,6 @@ public class Sorting {
             return;
         }
 
-        if (!(list.get(0) instanceof Comparable)) {
-            // unsortable
-            return;
-        }
-        
         for (int i=0; i<list.size()-1; i++) {
             T smallest = list.get(i);
             int smallesti = i;
@@ -46,11 +41,6 @@ public class Sorting {
             return;
         }
 
-        if (!(list.get(0) instanceof Comparable)) {
-            // unsortable
-            return;
-        }
-        
         for (int i = 1; i<list.size(); i++) {
             T next = list.get(i);
             list.remove(i);
