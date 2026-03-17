@@ -43,9 +43,9 @@ public class Sorting {
 
         for (int i = 1; i<list.size(); i++) {
             T next = list.get(i);
-            list.remove(i);
+            list.remove(i); // remove it from the list (unconditionally)
             int j=i-1;
-            for (; j>=0 && list.get(j).compareTo(next)>0; j--);
+            for (; j>=0 && list.get(j).compareTo(next)>0; j--); // this empty for loop finds the right spot for next
             list.add(j+1, next); // insert it at the right spot
         }
     }
