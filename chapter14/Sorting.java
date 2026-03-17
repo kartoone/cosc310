@@ -1,6 +1,7 @@
 package chapter14;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Sorting {
 
@@ -40,8 +41,30 @@ public class Sorting {
         }
     }
 
+    public static void insertionSort(ArrayList list) {
+        // some optimizations
+        if (list.size()<2) {
+            return;
+        }
+
+        if (!(list.get(0) instanceof Comparable)) {
+            // unsortable
+            return;
+        }
+        
+        Iterator<Comparable> it = list.iterator();
+        it.next();
+        int i = 1;
+        while (it.hasNext()) {
+            Comparable next = it.remove();
+            int j=i-1;
+            for (; j>=0 && next.compareTo(list.get(j))<0; j--); 
+            i++;
+        }
+    }
+
     public static void main(String[] args) {
-        ArrayList<Integer> test = new ArrayList<>();
+        ArrayList test = new ArrayList<>();
         test.add(5);
         test.add(7);
         test.add(32);
