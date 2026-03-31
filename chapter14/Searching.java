@@ -70,7 +70,7 @@ public class Searching {
         }
     }
 
-    // inclusive on BOTH ends because we are not talking about positions
+    // inclusive on BOTH ends (for min_needle and max_needle) because we are not talking about positions
     public static ArrayList<BikeDataRecord> binarySearch(ArrayList<BikeDataRecord> haystack, int start, int end, long min_needle, long max_needle) {
         if (start <= end) {
             int mid = (start + end) / 2;
