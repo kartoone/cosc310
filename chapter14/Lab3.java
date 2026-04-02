@@ -16,6 +16,30 @@ public class Lab3 {
         records.addAll(records2);
         records.addAll(records3);
         records.addAll(records4);
+
+        // sort by speed
+        records.sort((r1, r2)->Float.compare(r2.getSpeed(),r1.getSpeed()));
+        List<BikeDataRecord> highspeedsonly = records.stream().filter((r)->r.getSpeed()>16.0f).toList();
+        int hrtotal1 = highspeedsonly.stream().map((r)->r.getHeartrate()).reduce(0,Integer::sum);
+        System.out.println(highspeedsonly.size());
+        System.out.println(hrtotal1/highspeedsonly.size());
+
+        List<BikeDataRecord> susphrdata = records.stream().filter((r)->r.getTimestamp()>=1142088651&&r.getTimestamp()<=1142088671).toList();
+        ArrayList<BikeDataRecord> newlist = new ArrayList<>(susphrdata);
+        newlist.sort((r1,r2)->Long.compare(r1.getTimestamp(),r2.getTimestamp()));
+        for (BikeDataRecord bikeDataRecord : newlist) {
+            System.out.println(bikeDataRecord);
+        }
+        
+
+
+
+
+
+
+
+
+
         System.out.println(records.size());
         BikeDataRecord.sortCriteria = 0;
         List<BikeDataRecord> sortedRecords = Sorting.mergeSort(records);
@@ -41,7 +65,7 @@ public class Lab3 {
 
         ArrayList<BikeDataRecord> lunchday3  = Searching.binarySearch((ArrayList<BikeDataRecord>)sortedRecords, 1141920754L+72800, 1141923454L+72800);
         System.out.println(lunchday3.size());
-        int hrtotal3 = lunchday3.stream().map(BikeDataRecord::getHeartrate).reduce(0, Integer::sum);
+        int hrtotal3 = lunchday3.stream().map(r -> r.getHeartrate()).reduce(0, Integer::sum);
         int hravg3 = hrtotal3/lunchday3.size();
         System.out.println(hravg3);
         int[][] radarArrayTest = new int[][] { new int[] {10, 3}, new int[] {20, 6, 7, 8, 9}, new int[] { 50, 10} };

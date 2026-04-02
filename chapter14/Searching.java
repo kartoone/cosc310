@@ -117,7 +117,6 @@ public class Searching {
                 case 2: val = r.getHeartrate(); break;
                 case 7: val = r.getPow(); break;
                 case 8: val = r.getCad(); break;
-                case 9: val = r.getDegC(); break;
                 default: val = 0;
             }
             if (val == needle) {
@@ -131,7 +130,6 @@ public class Searching {
                         case 2: val = r.getHeartrate(); break;
                         case 7: val = r.getPow(); break;
                         case 8: val = r.getCad(); break;
-                        case 9: val = r.getDegC(); break;
                         default: val = 0;
                     }
                 }
@@ -144,7 +142,6 @@ public class Searching {
                             case 2: val = r.getHeartrate(); break;
                             case 7: val = r.getPow(); break;
                             case 8: val = r.getCad(); break;
-                            case 9: val = r.getDegC(); break;
                             default: val = 0;
                         }
                     }
@@ -157,7 +154,6 @@ public class Searching {
                         case 2: val = r.getHeartrate(); break;
                         case 7: val = r.getPow(); break;
                         case 8: val = r.getCad(); break;
-                        case 9: val = r.getDegC(); break;
                         default: val = 0;
                     }
                 }
@@ -170,7 +166,6 @@ public class Searching {
                             case 2: val = r.getHeartrate(); break;
                             case 7: val = r.getPow(); break;
                             case 8: val = r.getCad(); break;
-                            case 9: val = r.getDegC(); break;
                             default: val = 0;
                         }
                     }
