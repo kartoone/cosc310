@@ -33,8 +33,13 @@ public class ArrayStack<T> implements Stack<T>, Comparable<Stack<T>> {
         return data.get(data.size()-1);
     }
 
+    protected void helper() {
+        System.out.println("help!");
+    }
+
     @Override
     public int size() {
+        helper();
         return data.size();
     }
 

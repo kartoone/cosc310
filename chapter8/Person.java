@@ -52,6 +52,9 @@ abstract public class Person {
         this.email = email;
     }
 
-    
+    @Override
+    public String toString() {
+        return getType() + ": " + getName();
+    }
 
 }
