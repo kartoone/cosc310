@@ -41,5 +41,8 @@ public class Node<E> {
         else
             return 1 + parent.depth();
     }
-
+    @Override
+    public String toString() {
+        return data.toString();
+    }
 }

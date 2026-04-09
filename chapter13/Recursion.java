@@ -53,8 +53,8 @@ public class Recursion {
     }
 
     public static long sum(int lis[]) {
-        if (lis.length==1) {
-            return lis[0];
+        if (lis.length==0) {
+            return 0;
         } else {
             return lis[0] + sum(java.util.Arrays.copyOfRange(lis, 1, lis.length));
         }
