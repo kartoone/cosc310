@@ -26,12 +26,12 @@ public class Recursion {
     }
 
     public static int searchHelper(String needle, String haystack[], int i) {
-        if (haystack.length==0)
+        if (haystack.length==i)
             return -1;
-        else if(needle.equals(haystack[0]))
+        else if(needle.equals(haystack[i]))
             return i;
         else
-            return searchHelper(needle, java.util.Arrays.copyOfRange(haystack,1,haystack.length), i+1);
+            return searchHelper(needle, haystack, i+1);
     }
 
     public static int searchHelper2(String needle, String haystack[]) {
@@ -53,8 +53,8 @@ public class Recursion {
     }
 
     public static long sum(int lis[]) {
-        if (lis.length==1) {
-            return lis[0];
+        if (lis.length==0) {
+            return 0;
         } else {
             return lis[0] + sum(java.util.Arrays.copyOfRange(lis, 1, lis.length));
         }
