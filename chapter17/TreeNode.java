@@ -2,24 +2,24 @@ package chapter17;
 
 import java.util.ArrayList;
 
-public class Node<E> {
+public class TreeNode<E> {
 
     protected E data;
-    protected Node<E> parent;
-    protected ArrayList<Node<E>> children = new ArrayList<>();
+    protected TreeNode<E> parent;
+    protected ArrayList<TreeNode<E>> children = new ArrayList<>();
 
-    public Node(Node<E> parent, E data) {
+    public TreeNode(TreeNode<E> parent, E data) {
         this.parent = parent;
         this.data = data;
     }
 
-    public Node(Node<E> parent, ArrayList<Node<E>> children, E data) {
+    public TreeNode(TreeNode<E> parent, ArrayList<TreeNode<E>> children, E data) {
         this.parent = parent;
         this.children = children;
         this.data = data;
     }
 
-    public void addChild(Node<E> child) {
+    public void addChild(TreeNode<E> child) {
         this.children.add(child);
         child.parent = this;
     }
@@ -29,7 +29,7 @@ public class Node<E> {
     // (counts this node as well)
     public int size() {
         int count = 1;
-        for (Node<E> child : children) {
+        for (TreeNode<E> child : children) {
            count += child.size();
         }
         return count;
