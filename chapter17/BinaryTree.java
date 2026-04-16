@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class BinaryTree<E> {
 
     protected int size = 0; // real-time size
-    protected int height = 0; // cached height
+    protected int height = -1; // cached height
     protected boolean changed = false; // for knowing when we need to recalculate the height
     protected BinaryTreeNode<E> root = null;
 
@@ -130,16 +130,14 @@ public class BinaryTree<E> {
 
     protected ArrayList<BinaryTreeNode<E>> leafHelper(BinaryTreeNode<E> n) {
         ArrayList<BinaryTreeNode<E>> theleaves = new ArrayList<>();
-        if (n == root) {
-            // handle the highly unusual situation where the root of the tree is the tree's only leaf
-            theleaves.add(n);
-            return theleaves;
-        }
         if (n.left!=null) {
             theleaves.addAll(leafHelper(n.left));
         }
         if (n.right!=null) {
             theleaves.addAll(leafHelper(n.right));
+        }
+        if (n.left == null && n.right == null) {
+            theleaves.add(n);
         }
         return theleaves;
     }
