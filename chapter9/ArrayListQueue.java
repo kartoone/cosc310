@@ -24,11 +24,15 @@ public class ArrayListQueue<T> implements Queue<T> {
         buffer.set(tail, item);
         size++;
         tail = (tail + 1) % buffer.size();
+        buffer.add(item);
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO - check for empty queue
+        if (isEmpty()){
+            throw new Exception("Queue Empty");
+        }
         T item = buffer.get(head);
         size--;
         head = (head + 1) % buffer.size();
