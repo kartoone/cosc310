@@ -1,6 +1,7 @@
 package chapter17;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Tree<E> {
 
@@ -137,5 +138,42 @@ public class Tree<E> {
         return ancestor(n2, n1);
     }
 
+    // pre-order traversal of the tree
+    // returns null on an empty tree
+    // otherwise, returns a flat list of nodes in pre-order 
+    public ArrayList<TreeNode<E>> preOrder() {
+        if (root==null) {
+            return null;
+        }
+        //return preOrder(root);
+        ArrayList<TreeNode<E>> result = new ArrayList<>();
+        preOrder(root, result);
+        return result;
+    }
+
+    // super simple: visit the node, then visit the children
+    // inefficient, don't use this one!
+    public ArrayList<TreeNode<E>> preOrder(TreeNode<E> n) {
+        ArrayList<TreeNode<E>> nodes = new ArrayList<>();
+        nodes.add(n); // "visit" the node
+        if (n.children != null) {
+            Iterator<TreeNode<E>> it = n.children.iterator();
+            while(it.hasNext()) {
+                nodes.addAll(preOrder(it.next()));
+            }
+        }
+        return nodes;
+    }
+
+    // void b/c we are "building up" the result in the second parameter
+    public void preOrder(TreeNode<E> n, ArrayList<TreeNode<E>> preorderList) {
+        preorderList.add(n); // "visit" the node
+        if (n.children != null) {
+            Iterator<TreeNode<E>> it = n.children.iterator();
+            while(it.hasNext()) {
+                preorderList.addAll(preOrder(it.next()));
+            }
+        }
+     }
 
 }
