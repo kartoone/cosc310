@@ -19,15 +19,21 @@ public class DBIndexingDemo {
 
         // now let's add the records to a binary search tree so that we can index them by timestamp and then do a range search on the tree to get all records in a certain time range
         System.out.println("Adding " + records.size() + " records to the tree");
-        BikeDataRecord.sortCriteria = 4; // sort by timestamp
+        BikeDataRecord.sortCriteria = 4; // sort by dist
         BinarySearchTree<BikeDataRecord> recordTree = new BinarySearchTree<>(records.get(0));
         for (int i = 1; i < records.size(); i++) {
             recordTree.add(records.get(i));
             if (i%1000==0) {
                 System.out.println("Added "+i+" records to the tree...");
                 System.out.println(recordTree.size());
-                System.out.println(recordTree.height());
             }
+        }
+        System.out.println("Height: " + recordTree.height());
+        BikeDataRecord searchRecord = new BikeDataRecord(0, 5.0f, 0, 0, 108.0f, 0, 0, 0, 0, 0, null);
+        BinaryTreeNode<BikeDataRecord> hit = recordTree.search(searchRecord);
+        while (hit != null) {
+            System.out.println("Finding 5.0" + hit);
+            hit = recordTree.search(hit.right(), searchRecord);
         }
 
         // sort by speed ... new, easier way to sort ... but note that it is mutative (i.e., it modifies the original list)

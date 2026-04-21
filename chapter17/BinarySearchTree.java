@@ -29,7 +29,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
             return null;
         if (node.data==null) // this is a fake leaf, so we return null to indicate not found
             return null;
-        if (data.equals(node.data))
+        if (data.compareTo(node.data)==0)
             return node;
         else if (data.compareTo(node.data)<0) // data we are looking for is LESS THAN the node we are on so look down the left branch
             return search(node.left, data);

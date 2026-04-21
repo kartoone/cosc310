@@ -32,6 +32,20 @@ public class BikeDataRecord implements Comparable<BikeDataRecord> {
     // SORT CRITERIA - CHANGE THIS TO WHAT YOU WANT TO SORT BY - DEFAULTS TO DISTANCE B/C ALREADY SORTED BY TIMESTAMP
     public static int sortCriteria = 1; // 0-timestamp, 1-distance, 2-heartrate, 3-speed, etc...
 
+    public BikeDataRecord(long timestamp, float distance, int heartrate, float speed, float alt, float lat, float lng, int pow, int cad, float degC, int[][] radarArray) {
+        this.timestamp = timestamp;
+        this.distance = distance;
+        this.heartrate = heartrate;
+        this.speed = speed;
+        this.alt = alt;
+        this.lat = lat;
+        this.lng = lng;
+        this.pow = pow;
+        this.cad = cad;
+        this.degC = degC;
+        this.radarArray = radarArray;
+    }
+
     public BikeDataRecord(JSONArray recjson) {
         timestamp = Long.parseLong(recjson.getString(0));
         distance = Float.parseFloat(recjson.getString(1));
