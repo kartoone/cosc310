@@ -43,5 +43,7 @@ public class DBIndexingDemo {
         System.out.println(highspeedsonly.size());
         System.out.println(hrtotal1/highspeedsonly.size());
 
+        BinarySearchTree<Double> altitudeTree = new BinarySearchTree<>((double) records.get(0).getAlt());
+        System.out.println(records.stream().filter((bdr)->bdr.getAlt()<10.0).mapToDouble((r)->{double alt = (double) r.getAlt(); altitudeTree.add(alt); return alt;}).average());
     }
 }
