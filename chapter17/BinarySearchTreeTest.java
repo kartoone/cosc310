@@ -1,6 +1,9 @@
 package chapter17;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.*;
 
 public class BinarySearchTreeTest {
@@ -11,11 +14,12 @@ public class BinarySearchTreeTest {
     @Before
     public void setup() {
         emptytree = new BinarySearchTree<>();
-        tree = new BinarySearchTree<>("Martha");
-        tree.add("Bill");
-        tree.add("Sally");
-        tree.add("Adam");
-        tree.add("Jerry");
+        tree = new BinarySearchTree<>("Ben");
+        tree.add("Chewey");
+        tree.add("Hans");
+        tree.add("Sam");
+        tree.add("Luke");
+        tree.add("Mary");
     }
 
     @Test
@@ -41,7 +45,14 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void testToString() {
-
+    public void testInOrder() {
+        ArrayList<BinaryTreeNode<String>> result = tree.inOrder();
+        String expected = "[Ben, Chewey, Hans, Luke, Mary, Sam]";
+        String actual = result.toString();
+        assertEquals(expected, actual);
+        result = emptytree.inOrder();
+        expected = "[]";
+        actual = result.toString();
+        assertEquals(expected, actual);
     }
 }

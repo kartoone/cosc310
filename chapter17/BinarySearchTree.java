@@ -1,5 +1,7 @@
 package chapter17;
 
+import java.util.ArrayList;
+
 public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
     
     public BinarySearchTree() {
@@ -156,4 +158,24 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
         return true;
 
     }
+
+    //
+    public ArrayList<BinaryTreeNode<E>> inOrder() {
+        return inOrder(root);
+    }
+
+    // recursively visit the left child first
+    // then visit the parent
+    // then recursively visit the right child last
+    public ArrayList<BinaryTreeNode<E>> inOrder(BinaryTreeNode<E> n) {
+        ArrayList<BinaryTreeNode<E>> sortedNodes = new ArrayList<>();
+        if (n==null || n.data==null) {
+            return sortedNodes;
+        }
+        sortedNodes.addAll(inOrder(n.left));
+        sortedNodes.add(n);
+        sortedNodes.addAll(inOrder(n.right));
+        return sortedNodes;
+    }
+
 }

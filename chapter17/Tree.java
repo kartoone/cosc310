@@ -171,9 +171,33 @@ public class Tree<E> {
         if (n.children != null) {
             Iterator<TreeNode<E>> it = n.children.iterator();
             while(it.hasNext()) {
-                preorderList.addAll(preOrder(it.next()));
+                preOrder(it.next(), preorderList);
             }
         }
+     }
+
+    // post-order traversal of the tree
+    // returns null on an empty tree
+    // otherwise, returns a flat list of nodes in post-order 
+    public ArrayList<TreeNode<E>> postOrder() {
+        if (root==null) {
+            return null;
+        }
+        //return preOrder(root);
+        ArrayList<TreeNode<E>> result = new ArrayList<>();
+        postOrder(root, result);
+        return result;
+    }
+
+    // void b/c we are "building up" the result in the second parameter
+    public void postOrder(TreeNode<E> n, ArrayList<TreeNode<E>> postorderList) {
+        if (n.children != null) {
+            Iterator<TreeNode<E>> it = n.children.iterator();
+            while(it.hasNext()) {
+                postOrder(it.next(), postorderList);
+            }
+        }
+        postorderList.add(n); // "visit" the node
      }
 
 }
