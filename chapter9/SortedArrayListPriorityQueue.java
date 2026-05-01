@@ -27,19 +27,31 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
     @Override
     public void enqueue(int priority, T data) {
         // TODO: insert so list is sorted by priority ASC (lower number is higher priority)
-        list.add(new Entry<>(priority, data));
-        list.sort(null);
+        Entry<T> newEntry = new Entry<>(priority, data);
+        
+        int i = 0;
+        // Search for the first entry that has a higher priority number (lower priority)
+        while (i < list.size() && list.get(i).priority <= priority) {
+            i++;
+        }
+        list.add(i, newEntry);
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO: remove index 0
+        if (isEmpty()) {
+            throw new Exception("Priority Queue Empty");
+        }
         return list.remove(0).data;
     }
 
     @Override
     public T front() throws Exception {
         // TODO: return index 0
+        if (isEmpty()) {
+            throw new Exception("Priority Queue Empty");
+        }
         return list.getFirst().data;
     }
 
